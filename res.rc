@@ -1,0 +1,157 @@
+// resource
+#define IDR_MAIN                100
+#define IDM_POPUP               101
+#define IDM_FILE                102
+#define IDM_EDIT                103
+#define IDM_VIEW                104
+#define IDM_SAVE_PNG            201
+#define IDM_SAVE_BMP            202
+#define IDM_SAVE_ICO            203
+#define IDM_EXIT_APP            1001
+#define IDM_COPY_NAME           1002
+#define IDM_STATUSBAR           1003
+
+#define IDA_COPY_NAME           2001
+#define IDA_CLEAR_EDIT          2002
+#define IDA_FOCUS_EDIT          2003
+#define IDA_PREV_CONTROL        2004
+#define IDA_NEXT_CONTROL        2005
+
+#define IDM_PNG_FOLDER          20000
+#define IDM_BMP_FOLDER          30000
+#define IDM_ICO_FOLDER          40000
+
+#define VER_NUMBER              1, 0, 0, 0
+#define VER_STRING              "1, 0, 0, 0"
+#define VER_YEAR                "2018"
+
+#ifdef RC_INVOKED
+
+#include <winresrc.h>
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_NZ
+
+1 RT_MANIFEST DISCARDABLE
+{
+"<assembly xmlns=""urn:schemas-microsoft-com:asm.v1"" manifestVersion=""1.0"" xmlns:asmv3=""urn:schemas-microsoft-com:asm.v3"">"
+/// *** ComCtl32.dll v6 *** ///
+"<dependency>"
+"<dependentAssembly>"
+"<assemblyIdentity type=""win32"" name=""Microsoft.Windows.Common-Controls"" version=""6.0.0.0"" processorArchitecture=""*"" publicKeyToken=""6595b64144ccf1df""/>"
+"</dependentAssembly>"
+"</dependency>"
+/// *** UAC *** ///
+"<trustInfo xmlns=""urn:schemas-microsoft-com:asm.v2"">"
+"<security>"
+"<requestedPrivileges>"
+"<requestedExecutionLevel level=""asInvoker"" uiAccess=""false""/>"
+"</requestedPrivileges>"
+"</security>"
+"</trustInfo>"
+/// *** DPI awareness *** ///
+"<asmv3:application>"
+"<asmv3:windowsSettings xmlns=""http://schemas.microsoft.com/SMI/2005/WindowsSettings"">"
+"<dpiAware>true</dpiAware>"
+"</asmv3:windowsSettings>"
+"</asmv3:application>"
+/// *** OS compatibility *** ///
+"<compatibility xmlns=""urn:schemas-microsoft-com:compatibility.v1"">"
+"<application>"
+// Windows Vista
+"<supportedOS Id=""{e2011457-1546-43c5-a5fe-008deee3d3f0}""/>"
+// Windows 7
+"<supportedOS Id=""{35138b9a-5d96-4fbd-8e2d-a2440225f93a}""/>"
+// Windows 8
+"<supportedOS Id=""{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}""/>"
+// Windows 8.1
+"<supportedOS Id=""{1f676c76-80e1-4239-95bb-83d0f6d0da78}""/>"
+// Windows 10
+"<supportedOS Id=""{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}""/>"
+"</application>"
+"</compatibility>"
+"</assembly>"
+}
+
+IDR_MAIN MENUEX DISCARDABLE
+{
+    POPUP " ", IDM_POPUP,,, 0
+    {
+        MENUITEM "&Copy names", IDM_COPY_NAME
+        MENUITEM "", -1, MFT_SEPARATOR
+        POPUP "Save as &PNG", IDM_SAVE_PNG,,, 0
+        {
+            MENUITEM "", -1, MFT_SEPARATOR
+        }
+        POPUP "Save as &BMP", IDM_SAVE_BMP,,, 0
+        {
+            MENUITEM "", -1, MFT_SEPARATOR
+        }
+        POPUP "Save as &ICO", IDM_SAVE_ICO,,, 0
+        {
+            MENUITEM "", -1, MFT_SEPARATOR
+        }
+    }
+    POPUP "&File", IDM_FILE,,, 0
+    {
+        MENUITEM "E&xit", IDM_EXIT_APP
+    }
+    POPUP "&Edit", IDM_EDIT,,, 0
+    {
+        MENUITEM "&Copy names", IDM_COPY_NAME
+    }
+    POPUP "&View", IDM_VIEW,,, 0
+    {
+        MENUITEM "&Status bar", IDM_STATUSBAR,, MFS_CHECKED
+    }
+    POPUP "&PNG", IDM_SAVE_PNG,,, 0
+    {
+        MENUITEM "", -1, MFT_SEPARATOR
+        MENUITEM "&Browse...", IDM_PNG_FOLDER
+    }
+    POPUP "&BMP", IDM_SAVE_BMP,,, 0
+    {
+        MENUITEM "", -1, MFT_SEPARATOR
+        MENUITEM "&Browse...", IDM_BMP_FOLDER
+    }
+    POPUP "&ICO", IDM_SAVE_ICO,,, 0
+    {
+        MENUITEM "", -1, MFT_SEPARATOR
+        MENUITEM "&Browse...", IDM_ICO_FOLDER
+    }
+}
+
+IDR_MAIN ACCELERATORS DISCARDABLE
+{
+    VK_RETURN,      IDA_COPY_NAME,          VIRTKEY, NOINVERT
+//  VK_ESCAPE,      IDA_CLEAR_EDIT,         VIRTKEY, NOINVERT
+    VK_F4,          IDA_FOCUS_EDIT,         VIRTKEY, NOINVERT
+    VK_TAB,         IDA_NEXT_CONTROL,       VIRTKEY, NOINVERT
+    VK_TAB,         IDA_PREV_CONTROL,       VIRTKEY, SHIFT, NOINVERT
+}
+
+VS_VERSION_INFO VERSIONINFO DISCARDABLE
+FILEVERSION         VER_NUMBER
+PRODUCTVERSION      VER_NUMBER
+#ifdef _DEBUG
+FILEFLAGSMASK       VS_FF_DEBUG
+FILEFLAGS           VS_FF_DEBUG
+#endif
+FILEOS              VOS_NT_WINDOWS32
+FILETYPE            VFT_APP
+{
+    BLOCK "StringFileInfo"
+    {
+        BLOCK "000004b0"
+        {
+            VALUE "FileDescription",    "Web Icon Viewer"
+            VALUE "LegalCopyright",     "\251 " VER_YEAR " Tatsu"
+            VALUE "ProductVersion",     VER_STRING
+        }
+    }
+    BLOCK "VarFileInfo"
+    {
+        VALUE "Translation", 0x0 0x04B0
+    }
+}
+
+#endif // RC_INVOKED
